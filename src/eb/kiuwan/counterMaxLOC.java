@@ -56,8 +56,9 @@ public class counterMaxLOC {
 			json_response = EntityUtils.toString(response.getEntity());
 			JSONObject jsonobj = new JSONObject(json_response);
 			try {
+				String date = jsonobj.getString("date");
 				long lines = jsonobj.getJSONArray("Main metrics").getJSONObject(5).getLong("value");
-				System.out.println(lines+"\n");
+				System.out.println(lines+" on " + date +"\n");
 				sum = sum + lines;
 			} catch(Exception e) {
 				System.out.println("No analysis\n");
